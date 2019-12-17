@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Fuseau{% endblock %}
+
+{% block body %}
+    <h1>Edit Fuseau</h1>
+
+    {{ include('fuseau/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('fuseau_index') }}">back to list</a>
+
+    {{ include('fuseau/_delete_form.html.twig') }}
+{% endblock %}

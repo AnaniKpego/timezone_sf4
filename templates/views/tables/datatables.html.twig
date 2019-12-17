@@ -1,0 +1,238 @@
+
+{% extends 'base.html.twig'%}
+
+{% block body%}
+	<div class="wrapper">
+		<div class="main-header">
+			<!-- Navbar Header -->
+			<nav class="navbar navbar-header navbar-expand-lg" data-background-color="withe">
+				<div class="col-md-6 float-right p-0" style="display: flex">
+					<div class="col-md-1"><a class="button btn-primary btn-sm" href="{{ path('fuseau_fr') }}" style="text-decoration: none">Fr</a></div>
+					<div class="col-md-1"><a class="button btn-danger btn-sm" href="{{ path('fuseau_en') }}" style="text-decoration: none">En</a></div>
+				</div>
+
+			</nav>
+
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<h3 class="bg-white top-2" style="color: #ff8415;">Abidjan</h3>
+						<h6 class="nav-item" id="clock" style="color: #ff8415;">Abidjan</h6>
+					</div>
+					<div class="col-md-3">
+						<h3 class="bg-white top-2" style="color: #495aff;">Paris</h3>
+						<h6 class="nav-item" id="clockA" style="color: #495aff;">Paris</h6>
+					</div>
+					<div class="col-md-3">
+						<h3 class="bg-white top-2" style="color: #0c0cff;">New York</h3>
+						<h6 class="nav-item" id="clockB" style="color: #150dff;">New York</h6>
+					</div>
+					<div class="col-md-3">
+						<h3 class="bg-white top-2" style="color: #ff1524;">Shanghaï</h3>
+						<h6 class="nav-item" id="clockC" style="color: #ff1524;">Shanghaï</h6>
+					</div>
+				</div>
+			</div>
+			<!-- End Navbar -->
+		</div>
+		<div class="container-fluid pt-5">
+			<div class="content">
+				<div class="page-inner">
+					<div class="page-header">
+						<h4 class="page-title"></h4>
+						<h5 class="nav-item"></h5>
+						<h5 class="nav-item"></h5>
+					</div>
+					<div class="row pt-3">
+						<div class="col-md-12">
+							<div class="card">
+
+								<div class="card-header">
+									<h4 class="card-title"></h4>
+								</div>
+
+								<script>
+                                    {% if langue is defined and langue=='fr' %}
+                                    moment.locale('fr');
+                                    {% else %}
+                                    moment.locale('en');
+                                    {% endif %}
+                                    const clock = document.getElementById('clock');
+                                    function updateTime(){
+                                        const now = moment();
+
+                                        const hour = now.tz('Africa/Abidjan').format('HH:mm:ss A');
+                                        const today = now.tz('Africa/Abidjan'){% if langue is defined and langue=='fr' %}.format('dddd  Do MMMM  YYYY');{% else %}.format('dddd MMMM Do YYYY');{% endif %}
+
+                                        const  humanReadable =(hour);
+                                        clock.textContent = humanReadable;
+
+                                        console.log(humanReadable);
+                                    }
+                                    setInterval(updateTime, 1000);
+                                    updateTime();
+
+                                    const clockA = document.getElementById('clockA');
+                                    function parisTime(){
+                                        const now = moment();
+
+                                        const hour = now.tz('Europe/Paris').format('HH:mm:ss A');
+                                        const today = now.tz('Europe/Paris'){% if langue is defined and langue=='fr' %}.format('dddd  Do MMMM  YYYY');{% else %}.format('dddd MMMM Do YYYY');{% endif %}
+
+                                        const  humanReadable =(hour);
+                                        clockA.textContent = humanReadable;
+
+                                        console.log(humanReadable);
+                                    }
+                                    setInterval(parisTime, 1000);
+                                    parisTime();
+
+                                    const clockB = document.getElementById('clockB');
+                                    function uS(){
+                                        const now = moment();
+
+                                        const hour = now.tz('America/New_York').format('HH:mm:ss A');
+                                        const today = now.tz('America/New_York'){% if langue is defined and langue=='fr' %}.format('dddd  Do MMMM  YYYY');{% else %}.format('dddd MMMM Do YYYY');{% endif %}
+
+                                        const  humanReadable =(hour);
+                                        clockB.textContent = humanReadable;
+
+                                        console.log(humanReadable);
+                                    }
+                                    setInterval(uS, 1000);
+                                    uS();
+
+                                    const clockC = document.getElementById('clockC');
+                                    function sH(){
+                                        const now = moment();
+
+                                        const hour = now.tz('Asia/Shanghai').format('HH:mm:ss A');
+                                        const today = now.tz('Asia/Shanghai'){% if langue is defined and langue=='fr' %}.format('dddd  Do MMMM  YYYY');{% else %}.format('dddd MMMM Do YYYY');{% endif %}
+
+                                        const  humanReadable =(hour);
+                                        clockC.textContent = humanReadable;
+
+                                        console.log(humanReadable);
+                                    }
+                                    setInterval(sH, 1000);
+                                    sH();
+
+
+
+
+								</script>
+								<div class="card-body pt-5">
+									<div class="table-responsive">
+										<table id="basic-datatables" class="display table table-striped table-hover table-responsive" >
+											<thead>
+											<tr>
+                                                <th class="hidden-caret">Continents</th>
+												<th>UTC</th>
+                                                {% if langue is defined and langue=='fr' %}
+													<th>Pays</th>
+													<th>Villes</th>
+                                                {% else %}
+													<th>Countries</th>
+													<th>Cities</th>
+                                                {% endif %}
+												<!-- <th>Date</th>-->
+												<th>Date</th>
+											</tr>
+											</thead>
+											<tfoot>
+											<tr>
+
+												<th class="hidden">Continents</th>
+												<th>UTC</th>
+                                                {% if langue is defined and langue=='fr' %}
+													<th>Pays</th>
+													<th>Villes</th>
+                                                {% else %}
+													<th>Countries</th>
+													<th>Cities</th>
+                                                {% endif %}
+												<!-- <th>Date</th>-->
+												<th>Date</th>
+											</tr>
+											</tfoot>
+											<tbody>
+                                            {% for fuseau in fuseaux %}
+												<tr>
+                                                    {% if langue is defined and langue=='fr' %}
+                                                        <td class="hidden">{{ fuseau.pays.continents.nomFr }}</td>
+                                                        <td>{{ fuseau.utc }}</td>
+														<td>{{ fuseau.pays.nomFr }}</td>
+														<td>{{ fuseau.villeFr }}</td>
+                                                    {% else %}
+                                                        <td class="hidden">{{ fuseau.pays.continents.nomEn }}</td>
+                                                        <td>{{ fuseau.utc }}</td>
+														<td>{{ fuseau.pays.nomEn }}</td>
+														<td>{{ fuseau.villeEn }}</td>
+                                                    {% endif %}
+													<!--<td> {{ fuseau.fuseauHoraire }} </td>-->
+													<td id="clock{{ fuseau.id }}">111</td>
+
+												</tr>
+												<script>
+
+                                                    const clock{{ fuseau.id }} = document.getElementById('clock{{ fuseau.id }}');
+                                                    function sH{{ fuseau.id }}(){
+                                                        const now = moment();
+
+                                                        const hour = now.tz('{{ fuseau.fuseau }}').format('HH:mm:ss A');
+
+
+                                                        const today = now.tz('{{ fuseau.fuseau }}'){% if langue is defined and langue=='fr' %}.format('dddd  Do MMMM  YYYY');{% else %}.format('dddd MMMM Do YYYY');{% endif %}
+
+                                                        const  humanReadable =( today +" "+ hour);
+                                                        clock{{ fuseau.id }}.textContent = humanReadable;
+
+                                                        //console.log(humanReadable);
+                                                    }
+                                                    setInterval(sH{{ fuseau.id }}, 1000);
+                                                    sH{{ fuseau.id }}();
+												</script>
+
+
+                                            {% endfor %}
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<footer class="footer">
+				<div class="container-fluid">
+					<nav class="pull-left">
+						<ul class="nav">
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+
+								</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">
+									Webversalis
+								</a>
+							</li>
+						</ul>
+					</nav>
+					<div class="copyright ml-auto">
+						2019 <i class="fa fa-heart heart text-danger"></i> by <a href="https://www.facebook.com/kpegowebmobile/">Kpego webmobile</a>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+
+{% endblock %}
+

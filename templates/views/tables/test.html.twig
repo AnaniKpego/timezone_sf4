@@ -1,0 +1,12 @@
+{% for fuseau in fuseaux %}
+
+    <pre>
+        {{ fuseau.id }}
+        {{ fuseau.pays.continents.nomFr }}
+        {{ fuseau.pays.nomFr }}
+        {{ fuseau.villeFr }}
+        {{ fuseau.fuseau }}
+    </pre>
+
+
+{% endfor %}

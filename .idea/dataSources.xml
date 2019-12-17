@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="timezone_sf4@localhost" uuid="2d139288-d1e6-4c28-aef9-fdbcb04d9291">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/timezone_sf4</jdbc-url>
+      <default-dialect>GenericSQL</default-dialect>
+    </data-source>
+  </component>
+</project>

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Fuseau{% endblock %}
+
+{% block body %}
+    <h1>Create new Fuseau</h1>
+
+    {{ include('fuseau/_form.html.twig') }}
+
+    <a href="{{ path('fuseau_index') }}">back to list</a>
+{% endblock %}

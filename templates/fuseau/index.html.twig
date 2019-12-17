@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fuseau index{% endblock %}
+
+{% block body %}
+    <h1>Fuseau index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_fuseau</th>
+                <th>Utc</th>
+                <th>Fuseau_pays</th>
+                <th>Pays_fr</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fuseau in fuseaus %}
+            <tr>
+                <td>{{ fuseau.id }}</td>
+                <td>{{ fuseau.nomFuseau }}</td>
+                <td>{{ fuseau.utc }}</td>
+                <td>{{ fuseau.fuseauPays }}</td>
+                <td>{{ fuseau.paysFr }}</td>
+                <td>
+                    <a href="{{ path('fuseau_show', {'id': fuseau.id}) }}">show</a>
+                    <a href="{{ path('fuseau_edit', {'id': fuseau.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('fuseau_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fuseauhoraire{% endblock %}
+
+{% block body %}
+    <h1>Fuseauhoraire</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fuseauhoraire.id }}</td>
+            </tr>
+            <tr>
+                <th>Fuseau</th>
+                <td>{{ fuseauhoraire.fuseau }}</td>
+            </tr>
+            <tr>
+                <th>Utc</th>
+                <td>{{ fuseauhoraire.utc }}</td>
+            </tr>
+            <tr>
+                <th>Ville_en</th>
+                <td>{{ fuseauhoraire.villeEn }}</td>
+            </tr>
+            <tr>
+                <th>Ville_fr</th>
+                <td>{{ fuseauhoraire.villeFr }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('fuseauhoraire_index') }}">back to list</a>
+
+    <a href="{{ path('fuseauhoraire_edit', {'id': fuseauhoraire.id}) }}">edit</a>
+
+    {{ include('fuseauhoraire/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Fuseau{% endblock %}
+
+{% block body %}
+    <h1>Fuseau</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ fuseau.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_fuseau</th>
+                <td>{{ fuseau.nomFuseau }}</td>
+            </tr>
+            <tr>
+                <th>Utc</th>
+                <td>{{ fuseau.utc }}</td>
+            </tr>
+            <tr>
+                <th>Fuseau_pays</th>
+                <td>{{ fuseau.fuseauPays }}</td>
+            </tr>
+            <tr>
+                <th>Pays_fr</th>
+                <td>{{ fuseau.paysFr }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('fuseau_index') }}">back to list</a>
+
+    <a href="{{ path('fuseau_edit', {'id': fuseau.id}) }}">edit</a>
+
+    {{ include('fuseau/_delete_form.html.twig') }}
+{% endblock %}
