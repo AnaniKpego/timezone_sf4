@@ -66,13 +66,13 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Annotation\Route("/fuseaux", name="fuseau_fr", methods={"GET"})
+     * @Annotation\Route("/fr", name="fuseau_fr", methods={"GET"})
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getFuseau(ContinentRepository $continentRepository, FuseauhoraireRepository $fuseauhoraireRepository):Response
     {
         $language ='fr';
-        return $this->render('views/tables/test.html.twig',[
+        return $this->render('views/tables/datatables.html.twig',[
             'langue'=>$language,
             'fuseaux' => $fuseauhoraireRepository->findAll(),
             'continents'=>$continentRepository->findAll(),
